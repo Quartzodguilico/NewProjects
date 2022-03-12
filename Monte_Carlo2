@@ -1,0 +1,78 @@
+from random import choices
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+def titulo(msg):
+    print('\033[0;30;43m', end='')
+    print('-'*(len(msg)+4))
+    print(f'  {msg}')
+    print('-'*(len(msg)+4))
+    print('\033[m')
+
+total = dict()
+listatot = list()
+titulo('PROGRAMA DE SIMULAÇÃO DE MONTE CARLO!')
+
+quantidade = int(input('Quantas operações? '))
+carteiras = int(input('Quantas carteiras deseja adicionar? '))
+
+
+#variáveis iniciais
+capital = float(input('Qual é o valor de início? '))
+total['%vitoria'] = ganha = float(input('Qual a % de chance de vencer? '))
+total['%derrota'] = perde = 100-ganha
+
+#valor final ao acertar
+valor_ganha = float(input('Quantos % de prêmio ao acertar? '))
+valor_ganha = (valor_ganha/100)
+total['lucro'] = valor_ganha
+#valor final ao errar
+valor_perde = float(input('Quantos % de perda ao errar? '))
+valor_perde = (valor_perde/100)
+total['prejuizo'] = valor_perde
+aposta = float(input('Quantos % do valor inicial será utilizado? '))
+total['aposta'] = aposta
+total['capital'] = capital * (1 - (aposta / 100))
+#correção para n carteiras iguais
+for i in range(carteiras):
+    listatot.append(total.copy())
+
+capital_graf = list()
+dados_graf = list()
+for j in range(carteiras):
+    capital_graf.clear()
+
+    #calculo da probabilidade!
+
+    valores = ['ganha', 'perde']
+    pesos = [listatot[j]['%vitoria'], listatot[j]['%derrota']]
+    m = choices(valores, pesos, k=quantidade)
+
+    #calculo da função montecarlo!
+
+    listatot[j]['aposta'] = (listatot[j]['aposta']/100) * listatot[j]['capital']
+
+    for i in range(quantidade):
+
+        if m[i] == 'ganha' and listatot[j]['capital'] > 0:
+            listatot[j]['capital'] += listatot[j]['aposta']*total['lucro']
+        if m[i] == 'perde' and listatot[j]['capital'] > 0:
+            listatot[j]['capital'] -= listatot[j]['aposta']*total['prejuizo']
+        capital_graf.append(listatot[j]['capital'])
+        listatot[j]['capital'] = capital_graf[i]
+        listatot[j]['aposta'] = listatot[j]['capital'] * (aposta / 100)
+    dados_graf.append(capital_graf[:])
+    capital_graf.clear()
+
+oper = np.arange(0, quantidade, 1)
+
+for t in range(len(listatot)):
+    plt.plot(oper, dados_graf[t], label=f'Caso {t}')
+plt.ylabel('GRANINHA DA BOA')
+plt.xlabel('OPERAÇÕES')
+plt.title('MONTE CARLO')
+plt.legend()
+plt.show()
+
+titulo('<FIM DA SIMULAÇÃO, ATÉ LOGO>')
