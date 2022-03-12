@@ -75,4 +75,13 @@ plt.title('MONTE CARLO')
 plt.legend()
 plt.show()
 
+maior = 0
+menor = 0
+for f in range(carteiras):
+    if dados_graf[f][-1] > capital:
+        maior += 1
+    if dados_graf[f][-1] < capital:
+        menor += 1
+print(f'Das {carteiras} carteiras, {menor} terminaram abaixo do valor inicial e {maior} terminaram acima')    
+
 titulo('<FIM DA SIMULAÇÃO, ATÉ LOGO>')
