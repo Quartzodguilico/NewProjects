@@ -1,7 +1,6 @@
 from random import choices
 import matplotlib.pyplot as plt
 import numpy as np
-#The program will in the end print every scenary that was propose in graphics.
 
 total = dict()
 listatot = list()
@@ -9,7 +8,7 @@ quantidade = int(input('Quantas operações? '))
 while True:
     total.clear()
     #variáveis iniciais
-    total['capital'] = capital = float(input('Qual é o valor de início? '))
+    capital = float(input('Qual é o valor de início? '))
     total['%vitoria'] = ganha = float(input('Qual a % de chance de vencer? '))
     total['%derrota'] = perde = 100-ganha
 
@@ -21,7 +20,9 @@ while True:
     valor_perde = float(input('Quantos % de perda ao errar? '))
     valor_perde = (valor_perde/100)
     total['prejuizo'] = valor_perde
-    total['aposta'] = aposta = float(input('Quantos % do valor inicial será utilizado? '))
+    aposta = float(input('Quantos % do valor inicial será utilizado? '))
+    total['aposta'] = aposta
+    total['capital'] = capital * (1 - (aposta / 100))
     pergunta = str(input('Deseja continuar adicionando [S/N]? ')).upper()
     if pergunta not in 'SN':
         print('erro, informe S/N')
@@ -36,6 +37,7 @@ capital_graf = list()
 dados_graf = list()
 for j in range(len(listatot)):
     capital_graf.clear()
+
     #calculo da probabilidade!
 
     valores = ['ganha', 'perde']
@@ -53,6 +55,8 @@ for j in range(len(listatot)):
         if m[i] == 'perde' and listatot[j]['capital'] > 0:
             listatot[j]['capital'] -= listatot[j]['aposta']*total['prejuizo']
         capital_graf.append(listatot[j]['capital'])
+        listatot[j]['capital'] = capital_graf[i]
+        listatot[j]['aposta'] = listatot[j]['capital'] * (aposta / 100)
     dados_graf.append(capital_graf[:])
     capital_graf.clear()
 
