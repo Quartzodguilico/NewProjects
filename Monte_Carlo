@@ -32,7 +32,7 @@ while True:
     aposta = float(input('Quantos % do valor inicial será utilizado? '))
     total['aposta'] = aposta
     total['capital'] = capital * (1 - (aposta / 100))
-    pergunta = str(input('Deseja continuar adicionando [S/N]? ')).upper()
+    pergunta = str(input('Deseja continuar adicionando [S/N]? ')).upper().strip()[0]
     if pergunta not in 'SN':
         print('erro, informe S/N')
     else:
