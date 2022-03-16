@@ -1,0 +1,20 @@
+print('será que forma triângulo???' )
+a = float(input('diz um lado do triangulo: '))
+b = float(input('diz oto: '))
+c = float(input('só um pra acabar: '))
+
+if (a+b)<c or (a+c)<b or (c+b)<a:
+    print('mamou, não dá pra fazer um triangulo kkk')
+else:
+    print('obaaaa, é um triangulo sim!!')
+    if a == b and b == c:
+        print('equilatero')
+    elif a == b and b != c:
+        print('isosceles')
+    elif b == c and b != a:
+        print('isosceles')
+    elif a == c and b != a:
+        print('isosceles')
+    else:
+        print('escaleno')
+        
