@@ -1,0 +1,32 @@
+import random
+a = int(input('Escolha 1 p pedra, 2 p papel ou 3 p tesoura: '))
+
+if a == 1:
+    print('voce escolheu pedra')
+elif a == 2:
+    print('voce escolheu papel')
+elif a == 3:
+    print('voce escolheu tesoura')
+
+lista = ['pedra', 'papel', 'tesoura']
+b = random.choice(lista)
+print(f'o computador escolheu {b}')
+
+if a == 1 and b == 'pedra':
+    print('deu empate')
+elif a == 1 and b == 'papel':
+    print('vc perdeu')
+elif a == 1 and b == 'tesoura':
+    print('vc ganhou')
+if a == 2 and b == 'pedra':
+    print('vc ganhou')
+elif a == 2 and b == 'papel':
+    print('deu empate')
+elif a == 2 and b == 'tesoura':
+    print('vc perdeu')
+if a == 3 and b == 'pedra':
+    print('vc perdeu')
+elif a == 3 and b == 'papel':
+    print('você ganhou')
+elif a == 3 and b == 'tesoura':
+    print('deu empate')
