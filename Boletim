@@ -1,0 +1,12 @@
+lista = [[], []]
+
+for i in range(7):
+    n = int(input(f'Digite o {i+1}º numero: '))
+    if n%2 == 0:
+        lista[0].append(n)
+    if n%2 != 0:
+        lista[1].append(n)
+lista[0].sort()
+lista[1].sort()
+print(f'Os numeros pares digitados em ordem crescente são: {lista[0]}')
+print(f'Os numeros impares digitados em ordem crescente são: {lista[1]}')
