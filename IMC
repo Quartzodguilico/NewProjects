@@ -1,0 +1,36 @@
+print('~'*40)
+print('{:^40}'.format('CALCULO IMC'))
+print('~'*40)
+print(''*40)
+
+while True:
+    n = float(input('Qual o seu peso? '))
+    i = float(input('Qual a sua altura? '))
+    i = i/100
+
+    imc = n/(i**2)
+    print(f'\nSeu IMC é {imc:.2f}, e seu estado é de ', end='')
+    if imc < 18.5:
+        print(f'\033[1;31m{"magreza"}\033[0m')
+    elif imc < 24.9:
+        print(f'\033[1;32m{"normalidade"}\033[0m')
+    elif imc < 30:
+        print(f'\033[1;33m{"sobrepeso"}\033[0m')
+    elif imc >= 30:
+        print(f'\033[1;31m{"obesidade"}\033[0m')
+    print(''*40)
+
+    p = str(input('Deseja ver outro valor? ')).upper().strip()[0]
+    if p in 'SsNn':
+        if p == 'S':
+            print('\nOk, vamos para o próximo!')
+            
+        if p == 'N':
+            print('\nCerto, até mais então :D')
+            break
+    if p not in 'SsNn':
+        print('Erro!')
+        p = str(input('\nDeseja ver outro valor? ')).upper().strip()[0]
+        if p == 'N':
+            print('\nCerto, até mais então :D')
+            break
