@@ -1,0 +1,30 @@
+import random
+import time
+lista = []
+aposta = []
+print('~'*40)
+print('{:^40}'.format('GERADOR DE JOGOS DA MEGA'))
+print('~'*40)
+print()
+q = int(input('Quantas apostas você deseja gerar? '))
+print()
+print('+-'*5, f'GERANDO {q} JOGOS', '-+'*5)
+print()
+
+for t in range(q):
+    for i in range(6):
+        n = random.randint(1, 60)
+        aposta.append(n)
+        aposta.sort()
+    for p in range(5):
+        if aposta[p] == aposta[p+1]:
+            aposta[p+1] = random.randint(1, 60)
+            aposta.sort()
+    lista.append(aposta[:])
+    aposta.clear()
+for m in range(q):
+    print(f'Jogo {m+1}: {lista[m]}')
+    time.sleep(1)
+
+print()
+print('=-'*7, 'BOA SORTE :D', '-='*7)
