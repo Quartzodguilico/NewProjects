@@ -14,24 +14,24 @@ total = dict()
 listatot = list()
 titulo('PROGRAMA DE SIMULAÇÃO DE MONTE CARLO!')
 
-quantidade = int(input('Quantas operações? '))
-carteiras = int(input('Quantas carteiras deseja adicionar? '))
+quantidade = int(input('Quantas operações? '))                                      #how much operations per wallets
+carteiras = int(input('Quantas carteiras deseja adicionar? '))                      #how much wallets
 
 
 #variáveis iniciais
-capital = float(input('Qual é o valor de início? '))
-total['%vitoria'] = ganha = float(input('Qual a % de chance de vencer? '))
-total['%derrota'] = perde = 100-ganha
+capital = float(input('Qual é o valor de início? '))                                #money you beggin with
+total['%vitoria'] = ganha = float(input('Qual a % de chance de vencer? '))          #chances of winning
+total['%derrota'] = perde = 100-ganha                                               #chances of losing
 
 #valor final ao acertar
-valor_ganha = float(input('Quantos % de prêmio ao acertar? '))
-valor_ganha = (valor_ganha/100)
+valor_ganha = float(input('Quantos % de prêmio ao acertar? '))                      #how much you get when win
+valor_ganha = (valor_ganha/100)                                         
 total['lucro'] = valor_ganha
 #valor final ao errar
-valor_perde = float(input('Quantos % de perda ao errar? '))
+valor_perde = float(input('Quantos % de perda ao errar? '))                         #how much you lose when lose    
 valor_perde = (valor_perde/100)
 total['prejuizo'] = valor_perde
-aposta = float(input('Quantos % do valor inicial será utilizado? '))
+aposta = float(input('Quantos % do valor inicial será utilizado? '))                #how much will bet per operation
 total['aposta'] = aposta
 total['capital'] = capital * (1 - (aposta / 100))
 #correção para n carteiras iguais
