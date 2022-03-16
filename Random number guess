@@ -1,0 +1,19 @@
+import random
+num = random.randint(0, 10)
+palp = 1
+num1 = -1
+
+while num1 != num:
+    num1 = int(input('Tente adivinhar um numero entre 0 e 10: '))
+    if num1 != num:
+        palp += 1
+    if num1 != num:
+        print('erroulkkkk')
+if num1 == num:
+    print('')
+    if palp <= 3:
+        print(f'BOTOU QUENTEEEEEE, SÓ {palp} PALPITES?!!')
+    if palp > 3 and palp <= 7:
+        print(f'IHHHHH podia ser melhor... mas tá ok, foram {palp} palpites')
+    if palp > 7:
+        print(f'TA CUM OLHO ONDE? , QUE AZAR, PRECISOU DE {palp} PALPITES, JESUS...')
