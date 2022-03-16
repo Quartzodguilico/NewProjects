@@ -1,0 +1,10 @@
+n = str(input('Digite uma frase entre parênteses: '))
+
+lista = list(n)
+if lista.count('(') != lista.count(')'):
+    print('A expressão está incorreta!')
+else:
+    if lista.index('(') < lista.index(')'):
+        print('A expressão está válida!')
+    else:
+        print('A expressão está incorreta!')
