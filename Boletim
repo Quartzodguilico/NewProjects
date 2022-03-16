@@ -1,12 +1,56 @@
-lista = [[], []]
+lista = []
+nome = []
+notas = []
+media = []
+cont = 0
+r = ''
+while True:
+    nom = str(input('Nome do aluno: ')).capitalize()
+    not1 = float(input('Primeira nota: '))
+    not2 = float(input('Segunda nota: '))
+    med = (not1+not2)/2
+    notas.append(not1)
+    notas.append(not2)
+    nome.append(nom)
+    nome.append(notas[:])
+    nome.append(med)
+    lista.append(nome[:])
+    nome.clear()
+    notas.clear()
+    cont += 1
+    p = str(input('Deseja continuar? [S/N] ')).upper().strip()
+    while p not in 'SN':
+        print('Digite [S/N]!!')
+        p = str(input('Deseja continuar? [S/N] ')).upper().strip()
+    if p in 'SsNn':
+        if p == 'S':
+            print('Dados adicionados com sucesso!')
+        else:
+            print('Dados adicionados com sucesso!')
+            break
+print('-'*40)
+print(f'{"BOLETIM":^40}')
+print('-'*40)
+print(f'{"Nº":<6}{"NOME":<10}{"MEDIA":>8}{"SITUAÇÃO":>15}')
+for i in range(0, cont):
+    if lista[i][2] >= 7:
+        r = 'aprovado'
+    else:
+        r = 'reprovado'
+    print(f'{i:<6}{lista[i][0]:<10}{lista[i][2]:>8.2f}{r:>15}')
+print('-'*40)
+while True:
+    n = int(input('Deseja mostrar as notas de qual aluno? (999 para encerrar): '))
+    print()
+    if n == 999:
+        break
+    if n <= cont:
+        print(f'As notas de {lista[n][0]} são {lista[n][1][0]} e {lista[n][1][1]}')
+        print('-'*60)
+print()
+print(f'{"FIM DO PROGRAMA":-^60}')
 
-for i in range(7):
-    n = int(input(f'Digite o {i+1}º numero: '))
-    if n%2 == 0:
-        lista[0].append(n)
-    if n%2 != 0:
-        lista[1].append(n)
-lista[0].sort()
-lista[1].sort()
-print(f'Os numeros pares digitados em ordem crescente são: {lista[0]}')
-print(f'Os numeros impares digitados em ordem crescente são: {lista[1]}')
+
+
+#not2 = int(input('Segunda nota: '))
+
