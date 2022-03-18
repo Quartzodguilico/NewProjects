@@ -72,7 +72,6 @@ for t in range(len(listatot)):
 plt.ylabel('GRANINHA DA BOA')
 plt.xlabel('OPERAÇÕES')
 plt.title('MONTE CARLO')
-plt.legend()
 plt.show()
 
 maior = 0
