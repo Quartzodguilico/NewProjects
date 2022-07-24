@@ -73,6 +73,17 @@ plt.ylabel('GRANINHA DA BOA')
 plt.xlabel('OPERAÇÕES')
 plt.title('MONTE CARLO')
 plt.show()
+plt.figure(figsize=(30, 20))
+
+for t in range(len(listatot)):
+    plt.plot( oper, dados_graf[t],  label=f'Caso {t}')
+plt.yscale('log')
+plt.ylim(bottom=0.1)
+plt.ylabel('GRANINHA DA BOA')
+plt.xlabel('OPERAÇÕES')
+plt.title('MONTE CARLO')
+plt.show()
+plt.figure(figsize=(30, 20))
 
 maior = 0
 menor = 0
